@@ -9,6 +9,9 @@ public class LibrarySystem {
     private ArrayList<User> users;
     private ArrayList<Book> books;
     public LibrarySystem(){
+        this.lendings = new ArrayList<>();
+        this.users = new ArrayList<>();
+        this.books = new ArrayList<>();
     }
     void addBookWithTitleAndAuthorlist(String title, List<Author> authors) throws EmptyAuthorListException{
         if(authors.size()==0){
@@ -54,5 +57,17 @@ public class LibrarySystem {
     }
     void returnBook(User user, Book book) throws UserOrBookDoesNotExistException{
         return;
+    }
+
+    public String createLibraryTextHeader(){
+        String header = """
+                *******************************************
+                *                                         *
+                *               THE LIBRARY               *
+                *                                         *
+                *******************************************
+                           WELCOME TO THE LIBRARY               
+                """;
+        return header;
     }
 }
