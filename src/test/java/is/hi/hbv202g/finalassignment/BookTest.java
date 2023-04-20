@@ -21,7 +21,7 @@ public class BookTest {
         listOfAuthors.add(new Author("John"));
         listOfAuthors.add(new Author("Jane"));
         book = new Book("The Adventures Of John And Jane", listOfAuthors);
-}
+    }
 
     @Test
     public void testBookConstructor() throws EmptyAuthorListException {

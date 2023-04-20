@@ -3,9 +3,12 @@ package is.hi.hbv202g.finalassignment;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Main class of the Library program.
+ */
 public class Main {
     private static Scanner scanner;
-    private static LibrarySystem librarySystem;
+    private static LibrarySystemSingleton librarySystemSingleton;
 
     /**
      * The main method that runs the program.
@@ -14,7 +17,7 @@ public class Main {
      * @throws InterruptedException
      */
     public static void main(String[] args) throws EmptyAuthorListException, InterruptedException {
-        librarySystem = LibrarySystem.getInstance();
+        librarySystemSingleton = LibrarySystemSingleton.getInstance();
         scanner = new Scanner(System.in);
         System.out.println(createLibraryTextHeader());
         while(true){
@@ -45,11 +48,11 @@ public class Main {
             if(input.equalsIgnoreCase("exit")){
                 return;
             }
-            Book foundBook = librarySystem.findBookByTitle(input);
+            Book foundBook = librarySystemSingleton.findBookByTitle(input);
             if(foundBook == null){
                 System.out.println("Book not found");
             }else{
-                ArrayList<Lending> lendings = librarySystem.getLendings();
+                ArrayList<Lending> lendings = librarySystemSingleton.getLendings();
                 for(Lending lending: lendings) {
                     if (lending.getBook().getTitle().equals(foundBook.getTitle())) {
                         System.out.println("Book is already boorwed.");
@@ -64,8 +67,8 @@ public class Main {
                 System.out.println("Please enter your name:");
                 input = scanner.nextLine();
                 Student user = new Student(input, true);
-                librarySystem.borrowBook(user, foundBook);
-                lendings = librarySystem.getLendings();
+                librarySystemSingleton.borrowBook(user, foundBook);
+                lendings = librarySystemSingleton.getLendings();
                 for(Lending lending: lendings) {
                     if (lending.getBook().getTitle().equals(foundBook.getTitle())) {
                         System.out.println("Congratulations, you have borrowed the book " + foundBook.getTitle() +  " and your due date is: " + lending.getDueDate() + ".");
@@ -93,7 +96,7 @@ public class Main {
             if(input.equalsIgnoreCase("exit")){
                 return;
             }
-            Book foundBook = librarySystem.findBookByTitle(input);
+            Book foundBook = librarySystemSingleton.findBookByTitle(input);
             if(foundBook == null){
                 System.out.println("Book not found");
                 try{
@@ -106,7 +109,7 @@ public class Main {
                 System.out.println("Please enter your name:");
                 input = scanner.nextLine();
                 Student user = new Student(input, true);
-                ArrayList<Lending> lendings = librarySystem.getLendings();
+                ArrayList<Lending> lendings = librarySystemSingleton.getLendings();
                 boolean found = false;
                 for(Lending lending: lendings){
                     if(lending.getUser().getName().equals(user.getName())){
@@ -124,7 +127,7 @@ public class Main {
                     }
                 }
                 try {
-                    librarySystem.returnBook(user, foundBook);
+                    librarySystemSingleton.returnBook(user, foundBook);
                     System.out.println("Book returned.");
                     Thread.sleep(2000);
                 } catch (UserOrBookDoesNotExistException | InterruptedException e) {

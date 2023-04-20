@@ -11,7 +11,7 @@ import org.junit.runners.Suite;
         StudentTest.class,
         FacultyMemberTest.class,
         LendingTest.class,
-        LibrarySystemTest.class
+        LibrarySystemSingletonTest.class
 })
 public class AllTests {
     @AfterClass
