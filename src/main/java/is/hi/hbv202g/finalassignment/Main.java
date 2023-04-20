@@ -7,16 +7,20 @@ public class Main {
     private static Scanner scanner;
     private static LibrarySystem librarySystem;
 
+    /**
+     * The main method that runs the program.
+     * @param args The command line arguments
+     * @throws EmptyAuthorListException
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws EmptyAuthorListException, InterruptedException {
         librarySystem = LibrarySystem.getInstance();
         scanner = new Scanner(System.in);
         System.out.println(createLibraryTextHeader());
-
         while(true){
             CliMainMenu();
             String input = "";
             input = scanner.nextLine();
-
             if(input.equals("1") || input.toLowerCase().contains("borrow")){
                 CliBorrowBook();
             }
@@ -27,13 +31,11 @@ public class Main {
                 break;
             }
         }
-
-
-
     }
 
-
-
+    /**
+     * Allows the user to borrow a book in the LibrarySystem.
+     */
     private static void CliBorrowBook() {
         while(true){
             System.out.println("What is the title of the book you wish to borrow?");
@@ -79,6 +81,9 @@ public class Main {
         }
     }
 
+    /**
+     * Allows the user to return a book in the LibrarySystem.
+     */
     private static void CliReturnBook() throws InterruptedException {
         while(true){
             System.out.println("What is the title of the book you wish to return?");
@@ -132,7 +137,9 @@ public class Main {
     }
 
 
-
+    /**
+     * Creates the graphical header for the LibrarySystem.
+     */
     private static String createLibraryTextHeader(){
         String header = """
                 *******************************************
@@ -145,7 +152,7 @@ public class Main {
     }
 
     /**
-     *
+     * Creates the main menu of the program.
      */
     private static void CliMainMenu(){
         System.out.println("What would you like to do?");
