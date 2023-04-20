@@ -1,5 +1,6 @@
 package is.hi.hbv202g.finalassignment;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -12,6 +13,11 @@ public class LibrarySystemSingletonTest {
 
     @Rule
     public TestResultPrinter testResultPrinter = new TestResultPrinter();
+
+    @Before
+    public void setUp() throws EmptyAuthorListException {
+        librarySystemSingleton = LibrarySystemSingleton.getInstance();
+    }
 
     @Test
     public void testLibrarySystemAddBookWithTitleAndAuthorList() throws EmptyAuthorListException {

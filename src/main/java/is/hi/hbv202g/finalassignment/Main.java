@@ -144,12 +144,14 @@ public class Main {
      * Creates the graphical header for the LibrarySystem.
      */
     private static String createLibraryTextHeader(){
-        String header = """
+
+        String header = "THE LIBRARY";
+        String header2 = """
                 *******************************************
                 *                                         *
                 *               THE LIBRARY               *
                 *                                         *
-                *******************************************        
+                *******************************************
                 """;
         return header;
     }

@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hbv202g_assignment8" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hbv202g_assignment8" target="17" />
+      <module name="hbv202g_final" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
