@@ -1,19 +1,25 @@
 package is.hi.hbv202g.finalassignment;
 
+import org.junit.Rule;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class FacultyMemberTest {
 
+    @Rule
+    public TestResultPrinter testResultPrinter = new TestResultPrinter();
+
     @Test
     public void testFacultyMemberConstructor() {
-        FacultyMember facultyMember = new FacultyMember("John Doe", "Main Department");
+        FacultyMember facultyMember = new FacultyMember("John Doe", "Biology Department");
+        assertEquals("John Doe", facultyMember.getName());
+        assertEquals("Biology Department", facultyMember.getDepartment());
     }
 
     @Test
     public void testFacultyMemberSetAndGetDepartment() {
         FacultyMember facultyMember = new FacultyMember("John Doe", "Engineering Department");
-        assertEquals("Engineering Department", facultyMember.getDepartment());
         facultyMember.setDepartment("Science Department");
         assertEquals("Science Department", facultyMember.getDepartment());
     }

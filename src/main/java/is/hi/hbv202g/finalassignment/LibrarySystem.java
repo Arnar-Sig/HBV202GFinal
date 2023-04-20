@@ -5,14 +5,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibrarySystem {
+    private static LibrarySystem INSTANCE;
+
+
     private ArrayList<Lending> lendings;
     private ArrayList<User> users;
     private ArrayList<Book> books;
-    public LibrarySystem(){
+
+    public static LibrarySystem getInstance() throws EmptyAuthorListException {
+        if (INSTANCE == null) {
+            INSTANCE = new LibrarySystem();
+        }
+        return INSTANCE;
+    }
+
+    private LibrarySystem() throws EmptyAuthorListException {
         this.lendings = new ArrayList<>();
         this.users = new ArrayList<>();
         this.books = new ArrayList<>();
+        ArrayList<Author> book1Authors = new ArrayList<>();
+        book1Authors.add(new Author("J.K. Rowling"));
+        Book book1 = new Book("Harry Potter", book1Authors);
+        ArrayList<Author> book2Authors = new ArrayList<>();
+        book2Authors.add(new Author("J.R.R. Tolkien"));
+        Book book2 = new Book("The Hobbit", book2Authors);
+        ArrayList<Author> book3Authors = new ArrayList<>();
+        book3Authors.add(new Author("Stephen King"));
+        Book book3 = new Book("It", book3Authors);
+        books.add(book1); books.add(book2); books.add(book3);
     }
+
     void addBookWithTitleAndAuthorlist(String title, List<Author> authors) throws EmptyAuthorListException{
         if(authors.size()==0){
             throw new EmptyAuthorListException("No authors");
@@ -55,19 +77,21 @@ public class LibrarySystem {
             }
         }
     }
+
+    void addLending(Lending lending){
+        lendings.add(lending);
+    }
+
     void returnBook(User user, Book book) throws UserOrBookDoesNotExistException{
         return;
     }
 
-    public String createLibraryTextHeader(){
-        String header = """
-                *******************************************
-                *                                         *
-                *               THE LIBRARY               *
-                *                                         *
-                *******************************************
-                           WELCOME TO THE LIBRARY               
-                """;
-        return header;
+    public ArrayList<Lending> getLendings() {
+        return lendings;
     }
+
+    public void setLendings(ArrayList<Lending> lendings) {
+        this.lendings = lendings;
+    }
+
 }

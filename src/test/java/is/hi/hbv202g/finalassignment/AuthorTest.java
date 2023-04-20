@@ -1,11 +1,13 @@
 package is.hi.hbv202g.finalassignment;
 
+import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AuthorTest {
-
+    @Rule
+    public TestResultPrinter testResultPrinter = new TestResultPrinter();
 
     @Test
     public void testAuthorConstructor() {
@@ -14,13 +16,7 @@ public class AuthorTest {
     }
 
     @Test
-    public void testGetName(){
-        Author author = new Author("John");
-        assertEquals("John", author.getName());
-    }
-
-    @Test
-    public void testSetName(){
+    public void testAuthorSetAndGetName(){
         Author author = new Author("John");
         author.setName("Jane");
         assertEquals("Jane", author.getName());

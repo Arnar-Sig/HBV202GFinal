@@ -1,18 +1,23 @@
 package is.hi.hbv202g.finalassignment;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 public class LendingTest {
+
     private Book book;
     private Lending lending;
 
+    @Rule
+    public TestResultPrinter testResultPrinter = new TestResultPrinter();
+
     @Before
-    public void setup() throws EmptyAuthorListException {
+    public void testCreateLending() throws EmptyAuthorListException {
         ArrayList<Author> authors = new ArrayList<>();
         authors.add(new Author("J. R. R. Tolkien"));
         book = new Book("The Lord of the Rings", authors);
@@ -36,9 +41,9 @@ public class LendingTest {
 
     @Test
     public void testLendingSetAndGetDueDate(){
-        LocalDate timeNow = LocalDate.now();
-        lending.setDueDate(timeNow.plusDays(30));
-        assertEquals(timeNow.plusDays(30), lending.getDueDate());
+        LocalDate dueDate = LocalDate.now().plusDays(30);
+        lending.setDueDate(dueDate);
+        assertEquals(dueDate, lending.getDueDate());
     }
 
     @Test

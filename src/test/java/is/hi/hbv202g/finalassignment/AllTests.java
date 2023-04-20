@@ -1,5 +1,6 @@
 package is.hi.hbv202g.finalassignment;
 
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -11,7 +12,12 @@ import org.junit.runners.Suite;
         FacultyMemberTest.class,
         LendingTest.class,
         LibrarySystemTest.class
-
 })
 public class AllTests {
+    @AfterClass
+    public static void tearDownAfterClass() {
+        ResultStorageSingleton instance = ResultStorageSingleton.getInstance();
+        System.out.println(instance.toString());
+    }
 }
+

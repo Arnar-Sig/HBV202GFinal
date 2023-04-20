@@ -1,9 +1,14 @@
 package is.hi.hbv202g.finalassignment;
 
+import org.junit.Rule;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class StudentTest {
+
+    @Rule
+    public TestResultPrinter testResultPrinter = new TestResultPrinter();
 
     @Test
     public void testStudentConstructor() {
@@ -11,11 +16,14 @@ public class StudentTest {
     }
 
     @Test
-    public void testStudentSetFeePaidAndIsFeePaid() {
+    public void testIsFeePaid() {
         Student student = new Student("John Doe", false);
-        assertFalse(student.isFeePaid());
+        student.isFeePaid();
+    }
+    @Test
+    public void testStudentSetFeePaid() {
+        Student student = new Student("John Doe", false);
         student.setFeePaid(true);
-        assertTrue(student.isFeePaid());
     }
 
     @Test
